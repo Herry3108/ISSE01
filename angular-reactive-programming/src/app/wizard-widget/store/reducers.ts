@@ -11,6 +11,6 @@ export const initialState: HousesStateInterface = {
 
 export const reducers = createReducer(
     initialState, 
-    on(WizardWidgetActions.getHouse, (state) => ({ ...state, isLoading: true  }))
+    on(WizardWidgetActions.getHouses, (state) => ({ ...state, isLoading: true  }))
 );
 

@@ -1,3 +1,3 @@
 import { createAction, props } from "@ngrx/store";
 
-export const getHouse = createAction('[House] Get House');
+export const getHouses = createAction('[Houses] Get Houses');
