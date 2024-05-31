@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { WizardWidgetService } from './wizard-widget.service';
+import { HousesService } from './houses.service';
 
-describe('WizardWidgetService', () => {
-  let service: WizardWidgetService;
+describe('HousesService', () => {
+  let service: HousesService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(WizardWidgetService);
+    service = TestBed.inject(HousesService);
   });
 
   it('should be created', () => {
