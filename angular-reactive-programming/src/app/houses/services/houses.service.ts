@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HouseInterface } from './houses/types/house.interface';
+import { HouseInterface } from '../types/house.interface';
 import { Observable, delay, of } from 'rxjs';
 
 @Injectable({

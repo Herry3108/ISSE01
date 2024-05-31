@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 
-import * as WizardWidgetActions from "./actions";
+import * as HousesActions from "./actions";
 import { HousesStateInterface } from "../types/housesState.interface";
 
 
@@ -12,6 +12,16 @@ export const initialState: HousesStateInterface = {
 
 export const reducers = createReducer(
     initialState, 
-    on(WizardWidgetActions.getHouses, (state) => ({ ...state, isLoading: true })),
+    on(HousesActions.getHouses, (state) => ({ ...state, isLoading: true })),
+    on(HousesActions.getHousesSuccess, (state, action) => ({ 
+        ...state, 
+        isLoading: false, 
+        houses: action.houses 
+    })),
+    on(HousesActions.getHousesFailure, (state, action) => ({ 
+        ...state, 
+        isLoading: false, 
+        error: action.error 
+    }))
 );
 
