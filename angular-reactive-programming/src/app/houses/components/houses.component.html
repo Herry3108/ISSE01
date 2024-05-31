@@ -1,3 +1,12 @@
 <p>houses works!</p>
 <div *ngIf="isLoading$ | async">Loading...</div>
 
+<ul>
+  <li *ngFor="let house of houses$ | async">
+    {{ house.name }}
+  </li>
+</ul>
+
+<div *ngIf="error$ | async as error">
+  {{ error }}
+</div>  

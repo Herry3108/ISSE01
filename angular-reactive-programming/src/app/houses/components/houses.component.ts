@@ -3,7 +3,8 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppStateInterface } from 'src/app/types/appState.interface';
 import * as HouseActions from '../store/actions';
-import { isLoadingSelector } from '../store/selectors';
+import { errorSelector, housesSelector, isLoadingSelector } from '../store/selectors';
+import { HouseInterface } from '../types/house.interface';
 
 @Component({
   selector: 'app-houses',
@@ -12,9 +13,13 @@ import { isLoadingSelector } from '../store/selectors';
 })
 export class HousesComponent implements OnInit {
   isLoading$: Observable<boolean>;
+  houses$: Observable<HouseInterface[]>;
+  error$: Observable<string | null>;
 
   constructor(private store: Store<AppStateInterface>) {
     this.isLoading$ = this.store.pipe(select(isLoadingSelector));
+    this.houses$ = this.store.pipe(select(housesSelector));
+    this.error$ = this.store.pipe(select(errorSelector));
   }
 
   ngOnInit(): void {
