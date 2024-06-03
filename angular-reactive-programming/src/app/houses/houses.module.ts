@@ -6,10 +6,12 @@ import { HousesService } from './services/houses.service';
 import { HousesComponent } from './components/houses.component';
 import { EffectsModule } from '@ngrx/effects';
 import { HousesEffects } from './store/effects';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({     
   imports: [
     CommonModule,
+    MatTableModule,
     StoreModule.forFeature('houses', reducers),
     EffectsModule.forFeature([HousesEffects])
   ],

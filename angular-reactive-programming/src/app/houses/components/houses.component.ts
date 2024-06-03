@@ -13,12 +13,14 @@ import { HouseInterface } from '../types/house.interface';
 })
 export class HousesComponent implements OnInit {
   isLoading$: Observable<boolean>;
-  houses$: Observable<HouseInterface[]>;
+  houses!: HouseInterface[] | [];
   error$: Observable<string | null>;
+
+  displayedColumns: string[] = ['name', 'founder', 'element'];
 
   constructor(private store: Store<AppStateInterface>) {
     this.isLoading$ = this.store.pipe(select(isLoadingSelector));
-    this.houses$ = this.store.pipe(select(housesSelector));
+    this.store.pipe(select(housesSelector)).subscribe(houses => this.houses = houses);
     this.error$ = this.store.pipe(select(errorSelector));
   }
 
