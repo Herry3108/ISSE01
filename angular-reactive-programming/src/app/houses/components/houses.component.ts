@@ -12,16 +12,17 @@ import { HouseInterface } from '../types/house.interface';
   styleUrls: ['./houses.component.scss']
 })
 export class HousesComponent implements OnInit {
-  isLoading$: Observable<boolean>;
+  isLoading: boolean = false;
   houses!: HouseInterface[] | [];
-  error$: Observable<string | null>;
 
   displayedColumns: string[] = ['name', 'founder', 'element'];
 
   constructor(private store: Store<AppStateInterface>) {
-    this.isLoading$ = this.store.pipe(select(isLoadingSelector));
-    this.store.pipe(select(housesSelector)).subscribe(houses => this.houses = houses);
-    this.error$ = this.store.pipe(select(errorSelector));
+    this.store.pipe(select(isLoadingSelector)).subscribe(isLoading => this.isLoading = isLoading);
+    this.store.pipe(select(housesSelector)).subscribe(houses => {
+      this.houses = houses
+      this.isLoading = false;
+    });
   }
 
   ngOnInit(): void {

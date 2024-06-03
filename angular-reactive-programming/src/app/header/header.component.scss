@@ -1,5 +1,10 @@
-.header-custom-img {
-    width: 20%;
-    margin: 1em;
-    padding: 1em;
+.custom-header {
+    display: flex; 
+    justify-content: center; 
+
+    img {
+        width: 15%;
+        margin: 1em;
+        padding: 1em;
+    }
 }
