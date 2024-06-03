@@ -1,0 +1,42 @@
+﻿@page "/houses" 
+@inject IDispatcher dispatcher 
+@using BlazorReactiveProgramming.State.Houses
+@inject IState<HouseState> housesData 
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+
+<PageTitle>Houses</PageTitle>
+
+<h1>Houses</h1>
+
+
+@if (housesData.Value.IsLoading)
+{
+    <p><em>Loading...</em></p>
+    } else {
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Founder</th>
+        <th>Element</th>
+      </tr>
+    </thead>
+    <tbody>
+            @foreach (var house in housesData.Value.HousesData)
+            {
+      <tr>
+        <td>@house.Name</td>
+        <td>@house.Founder</td>
+        <td>@house.Element</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  } 
+  @code { 
+      protected override void OnInitialized() { 
+          
+          base.OnInitialized(); 
+          dispatcher.Dispatch(new FetchDataAction()); 
+      } 
+  }
