@@ -12,7 +12,10 @@ export const initialState: HousesStateInterface = {
 
 export const reducers = createReducer(
     initialState, 
-    on(HousesActions.getHouses, (state) => ({ ...state, isLoading: true })),
+    on(HousesActions.getHouses, (state) => ({ 
+        ...state, 
+        isLoading: true 
+    })),
     on(HousesActions.getHousesSuccess, (state, action) => ({ 
         ...state, 
         isLoading: false, 
